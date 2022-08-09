@@ -1,0 +1,41 @@
+class capture(object):
+	import cv2 as cv
+	import functools as ft
+	cv.namedWindow('mywin',cv.WINDOW_GUI_NORMAL)
+	global path1
+	def put():
+		global a,b
+		a=input()
+		b=input()
+		a=int(a)
+		b=int(b)
+	
+	@classmethod
+	def move(cs,e,x,y,flags,param):
+		import cv2 as cv
+		img=cv.imread(param)
+		global png
+		if e==cv.EVENT_LBUTTONDOWN:
+			print('作图')
+			print('按两下alt看图')
+			print('先点鼠标确认边框，再按住ctrl或shift，再点击鼠标保存')
+			newimg=cv.rectangle(img,(x,y),(x+a,y+b),[255,0,0])
+			cv.imshow('mywin',newimg)
+		if flags==cv.EVENT_FLAG_ALTKEY:
+			cv.imshow('mywin',img[y:y+b,x:x+a])
+			png=img[y:y+b,x:x+a]
+		if e==cv.EVENT_RBUTTONDOWN:
+			print('输入边框值')
+			cs.put()
+		if flags==cv.EVENT_FLAG_CTRLKEY:
+			name=input('请输入文件名')
+			cv.imwrite(r"C:\Users\U1092451\OneDrive - IQVIA\Desktop"+'\\'+name+'.jpg',png)
+	
+	@classmethod
+	def setcallback(cs,path):
+		import cv2 as cv
+		path1=path
+		cv.setMouseCallback('mywin',cs.move,path1)
+		img=cv.imread(path1)
+		cv.imshow('mywin',img)
+
