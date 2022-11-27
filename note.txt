@@ -1,0 +1,320 @@
+>>> import fitz as fi
+>>> pdf=fi.open(r'\\shasfps02p.internal.imsglobal.com\Public Files\BMS - China LC Retrospective study\Master File Tracker - Sites\Site007_吉林大学第一医院\8. 伦理委员会\8.3 研究中期伦理委员会递交及备案\CA209693-site007-CRO公司更名伦理备案递交信-20190128.pdf')
+>>> pdf.pageCount
+2
+>>> pdf[0]
+page 0 of \\shasfps02p.internal.imsglobal.com\Public Files\BMS - China LC Retrospective study\Master File Tracker - Sites\Site007_吉林大学第一医院\8. 伦理委员会\8.3 研究中期伦理委员会递交及备案\CA209693-site007-CRO公司更名伦理备案递交信-20190128.pdf
+>>> pdf[1]
+page 1 of \\shasfps02p.internal.imsglobal.com\Public Files\BMS - China LC Retrospective study\Master File Tracker - Sites\Site007_吉林大学第一医院\8. 伦理委员会\8.3 研究中期伦理委员会递交及备案\CA209693-site007-CRO公司更名伦理备案递交信-20190128.pdf
+>>> bg=pdf[0]
+>>> for a in range(pdf.pageCount):
+	page=pdf[a]
+	mat=fi.Matrix(2,2)
+	pix=page.getPixmap(matrix=mat)
+	pix.writePNG('C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.jpg')
+
+	
+>>> import cv2 as cv
+>>> def move(event,x,y,flatten,param):
+	if event==cv.EVENT_LBUTTONDOWN:
+		print('('+str(x)+','+str(y)+')')
+
+		
+>>> cv.namedWindow('mywin',cv.WINDOW_GUI_NORMAL)
+>>> cv.setMouseCallback('mywin',move)
+>>> cv.imread(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\0.jpg')
+>>> img=cv.imread(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\0.jpg')
+>>> cv.imshow('mywin',img)
+>>> (734,1602)
+(739,1593)
+(1183,1668)
+
+>>> 1183-739
+444
+>>> 1668-1593
+75
+>>> a=[255,255,255]
+>>> b=0
+>>> c=[]
+>>> while b<=74:
+	c.append(a)
+	b=b+1
+
+	
+>>> len(c)
+75
+>>> len(img[1,1593:1668])
+0
+>>> len(img[1593:1668,1])
+75
+>>> for num in range(739,1184):
+	img[1593:1668,num]=c
+
+	
+>>> cv.imshow('mywin',img)
+>>> (1125,1674)
+(1120,1677)
+
+>>> img.shape
+(1684, 1190, 3)
+>>> b=0
+>>> c=[]
+>>> 1684-1593
+91
+>>> while b<=90:
+	c.append(a)
+	b=b+1
+
+	
+>>> len(c)
+91
+>>> for num in range(739,1184):
+	img[1593:1684,num]=c
+
+	
+>>> cv.imshow('mywin',img)
+>>> cv.imwrite(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\0.jpg',img)
+True
+>>> (972,0)
+
+>>> img=cv.imread(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\1.jpg')
+>>> for num in range(739,1184):
+	img[1593:1684,num]=c
+
+	
+>>> cv.imwrite(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\1.jpg',img)
+True
+>>> import img2pdf
+>>> import img2pdf as itp
+>>> file=open(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\mypdf.pdf','ab')
+>>> for a in range(2):
+	path='C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.jpg'
+	content=itp.convert(path)
+	file.write(content)
+
+	
+254817
+271336
+>>> file.close()
+>>> import PyPDF2 as pdf
+>>> writer=pdf.PdfFileWriter()
+>>> file=open(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\mypdf.pdf','ab')
+>>> type(content)
+<class 'bytes'>
+>>> file.close()
+>>> for a in range(2):
+	file=open('C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.pdf','ab')
+	path='C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.jpg'
+	content=itp.convert(path)
+	file.write(content)
+
+	
+254817
+271336
+>>> file=open(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\mypdf.pdf','ab')
+>>> for a in range(2):
+	path='C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.pdf'
+	newpdf=pdf.PdfFileReader(path)
+	page=newpdf.getPage(0)
+	writer.addPage(page)
+
+	
+PdfReadWarning: Xref table not zero-indexed. ID numbers for objects will be corrected. [pdf.py:1736]
+>>> for a in range(2):
+	path='C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.pdf'
+	newpdf=pdf.PdfFileReader(path)
+	page=newpdf.getPage(1)
+	writer.addPage(page)
+>>> for a in range(2):
+	path='C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.pdf'
+	newpdf=pdf.PdfFileReader(path)
+	page=newpdf.getPage(0)
+	writer.addPage(page)
+
+	
+>>> writer.write(file)
+>>> file.close()
+>>> file=open(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\mypdf.pdf','ab')
+>>> for a in range(2):
+	path='C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.pdf'
+	newpdf=pdf.PdfFileReader(path)
+	page=newpdf.getPage(0)
+	writer.addPage(page)
+
+	
+>>> file.close()
+>>> file=open(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\mypdf.pdf','ab')
+>>> for a in range(2):
+	path='C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.pdf'
+	newpdf=pdf.PdfFileReader(path)
+	page=newpdf.getPage(0)
+	writer.addPage(page)
+
+	
+>>> writer.write(file)
+>>> file.close()
+>>> writes=pdf.PdfFileWriter()
+>>> file=open(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\mypdf.pdf','ab')
+>>> for a in range(2):
+	path='C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\'+str(a)+'.pdf'
+	newpdf=pdf.PdfFileReader(path)
+	page=newpdf.getPage(0)
+	writes.addPage(page)
+
+>>> writes.write(file)
+>>> file.close()
+
+PyMuPDF(fitz)
+img2pdf
+opencv(cv2)
+
+
+>>> img=cv.cvtColor(pic,cv.COLOR_RGB2GRAY)
+>>> cv.imshow('mywin',img)
+>>> num,png=cv.threshold(img,125,255,cv.THRESH_BINARY)
+
+>>> core=cv.getStructuringElement(cv.MORPH_RECT,(3,3))
+>>> dilated=cv.dilate(png,core)
+>>> cv.imshow('mywin',dilated)
+ 
+JS当中，for循环得结果只返回最终，需要逐个打印得话需要先设定一个‘’空白字符，而后‘’+for结果
+
+第一层：
+for(var i=0;i<=c.length-1;i++)
+{ if(i>=3)
+{ if(i%3==0)
+{ var x=''
+x=x+c[i-3]+c[i-2]+c[i-1]
+ arr.push(Number(x))}}}
+
+第二层：
+for(var t=0;t<=arr.length;t++){
+    if(t>=3){
+        if(t%3==0){
+            ray.push(arr.slice(t-3,t))
+            }}}
+
+合为1:
+for(var i=0;i<=c.length-1;i++)
+{ if(i>=3)
+{ if(i%3==0)
+{arr.push(Number(c.slice(i-3,i)))
+ if(arr.length%3==0){
+     ray.push(arr)
+     arr=[]}}}}
+
+def put():
+	global a,b
+	a=input()
+	b=input()
+	a=int(a)
+	b=int(b)
+
+保留前一个框
+def move(e,x,y,flag,param):
+	if e==cv.EVENT_LBUTTONDOWN:
+		print('作图')
+		newimg=cv.rectangle(img,(x,y),(x+a,y+b),[255,0,0])
+		cv.imshow('mywin',newimg)
+	if e==cv.EVENT_RBUTTONDOWN:
+		print('输入边框值')
+		put()
+	if e==cv.EVENT_LBUTTONDBLCLK:
+		renewimg=cv.imread(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\R-C2.png')
+		cv.imshow('mywin',renewimg)
+
+不保留前一个框，按alt保存
+def move(e,x,y,flags,param):
+	img=cv.imread(param)
+	if e==cv.EVENT_LBUTTONDOWN:
+		print('作图')
+		print('按两下alt保存')
+		global newimg
+		newimg=cv.rectangle(img,(x,y),(x+a,y+b),[255,0,0])
+		cv.imshow('mywin',newimg)
+	if flags==cv.EVENT_FLAG_ALTKEY:
+		print('文件名字')
+		cv.imshow('mywin',img[y:y+b,x:x+a])
+	if e==cv.EVENT_RBUTTONDOWN:
+		print('输入边框值')
+		put()
+
+可以保存图像
+def move(e,x,y,flags,param):
+	img=cv.imread(param)
+	if e==cv.EVENT_LBUTTONDOWN:
+		print('作图')
+		print('按两下alt看图')
+		print('先点鼠标确认边框，再按住ctrl或shift，再点击鼠标保存')
+		newimg=cv.rectangle(img,(x,y),(x+a,y+b),[255,0,0])
+		cv.imshow('mywin',newimg)
+	if flags==cv.EVENT_FLAG_ALTKEY:
+		global png
+		cv.imshow('mywin',img[y:y+b,x:x+a])
+		png=img[y:y+b,x:x+a]
+	if e==cv.EVENT_RBUTTONDOWN:
+		print('输入边框值')
+		put()
+	if flags==cv.EVENT_FLAG_CTRLKEY:
+		name=input('请输入文件名')
+		cv.imwrite(r"C:\Users\U1092451\OneDrive - IQVIA\Desktop\软件\minist"+'\\'+name+'.jpg',png)
+
+import functools as ft
+>>> simple=ft.partial(cv.setMouseCallback,window_name='mywin')
+>>> simple(on_mouse=move)
+
+for a,b,c in os.walk(r"C:\Users\U1092451\OneDrive - IQVIA\Desktop\minist"):
+	for d in c:
+		if d.endswith('.jpg'):
+			img=cv.imread(str(os.path.join(a,d)))
+			reimg=cv.resize(img,(25,25))
+			pic=cv.cvtColor(reimg,cv.COLOR_RGB2GRAY)
+			num,png=cv.threshold(pic,125,255,cv.THRESH_BINARY)
+			os.remove(str(os.path.join(a,d)))
+			cv.imwrite(str(os.path.join(a,d)),png)
+
+for a,b,c in os.walk(r"C:\Users\U1092451\OneDrive - IQVIA\Desktop\minist"):
+	for d in c:
+		if d.endswith('.jpg'):
+			img=cv.imread(str(os.path.join(a,d)))
+			reimg=cv.resize(img,(25,25))
+			pic=cv.cvtColor(reimg,cv.COLOR_RGB2GRAY)
+			num,png=cv.threshold(pic,125,255,cv.THRESH_BINARY)
+			e=d.replace('jpg','txt')
+			file=open(str(os.path.join(a,e)),'a')
+			for index in enumerate(png):
+				for num in enumerate(index[1]):
+					if len(png)-1==index[0] and len(index[1])-1==num[0]:
+						file.write(str(num[1]))
+					else:
+						file.write(str(num[1])+',')
+			file.close()
+
+
+input标签，可以有两种方法使用multiple，1是直接在标签上加，2是选择multiple属性，为布尔值，=true
+
+
+>>> jpg[1249:1249+50,503:603]=png
+>>> cv.namedWindow('mywin',cv.WINDOW_GUI_NORMAL)
+>>> cv.imshow('mywin',jpg)
+>>> cv.imshow('mywin',png)
+>>> png=cv.resize(img,(100,50))
+>>> cv.imshow('mywin',png)
+>>> png=cv.resize(img,(50,100))
+>>> cv.imshow('mywin',png)
+>>> png=cv.resize(img,(100,50))
+>>> cv.imshow('mywin',png)
+>>> cv.imshow('mywin',img)
+>>> img=cv.imread(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\3.jpg')
+>>> cv.imshow('mywin',img)
+>>> png=cv.resize(img,(100,50))
+>>> cv.imshow('mywin',png)
+>>> jpg[1249:1249+49,503:602]=png
+Traceback (most recent call last):
+  File "<pyshell#115>", line 1, in <module>
+    jpg[1249:1249+49,503:602]=png
+ValueError: could not broadcast input array from shape (50,100,3) into shape (49,99,3)
+>>> jpg[1249:1249+50,503:603]=png
+>>> cv.imshow('mywin',jpg)
+>>> cv.imwrite(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\4.jpg',jpg)
+

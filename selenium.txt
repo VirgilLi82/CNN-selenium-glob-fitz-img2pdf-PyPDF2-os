@@ -1,0 +1,15 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+newoption=Options()
+newoption.add_argument('--disable-blink-feature=AutomationControlled')
+page=webdriver.Chrome(executable_path=r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Software\chromedriver.exe',options=newoption)
+page.execute_script('alert("hello,world")')
+
+接管Chrome
+"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\Users\U1092451\OneDrive - IQVIA\Desktop\Software\Chrome"
+chrome_options = Options()
+chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+from selenium.webdriver import Chrome
+from selenium.webdriver.chrome.options import Options
+os.popen(r'"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222 --user-data-dir="C:\Users\U1092451\OneDrive - IQVIA\Desktop\Software\Chrome"')
+

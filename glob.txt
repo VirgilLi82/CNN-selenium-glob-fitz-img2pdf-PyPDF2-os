@@ -1,0 +1,354 @@
+Python 3.9.4 (tags/v3.9.4:1f2e308, Apr  6 2021, 13:22:44) [MSC v.1928 32 bit (Intel)] on win32
+Type "help", "copyright", "credits" or "license()" for more information.
+>>> import os,time,shutil,glob
+>>> import pandas as pd
+>>> book1=pd.read_excel(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\CNTO1959PSO4009_SUSAR Tracker.xlsx')
+>>> book2=pd.read_excel(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\启动会负责的各中心\武汉协和\伦理文件\年审\古塞奇尤单抗SUSAR中文版清单（202107-202201）.xlsx')
+>>> documento=os.listdir(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\SUSAR\12-1-2')
+>>> import re
+>>> gai=re.compile('^\d*_\d_')
+>>> document=[ re.match(gai,x) for x in documento]
+>>> document
+
+>>> document.clear()
+>>> document
+[]
+>>> document=[ re.match(gai,x).group(0) for x in documento]
+>>> document
+
+>>> glob.glob(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\SUSAR\12-1-2\20211035499_6_*.pdf')
+['C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\12-1-2\\20211035499_6_Blinded.pdf']
+>>> glob.glob(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\SUSAR\12-1-2\*Blinded.pdf')
+
+>>> len(documento)
+28
+>>> len(glob.glob(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\SUSAR\12-1-2\*Blinded.pdf'))
+28
+>>> glob.glob(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\SUSAR\12-1-2\*Blinded.pdf')[0]
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\12-1-2\\20211035499_6_Blinded.pdf'
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber.replace(')','_')
+	if reportnumber2 in documento:
+		print('*******move document*******')
+		time.sleep(1)
+		shutil.move(glob.glob('C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\12-1-2\\'+reportnumber2+'*.pdf')[0],'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\'+reportnumber2+'Blinded.pdf')
+
+		
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber.replace(')','_')
+	if reportnumber2 in documento:
+		print('*******move document*******')
+		time.sleep(1)
+		shutil.move(glob.glob('C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\12-1-2\\'+reportnumber2+'*.pdf')[0],'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\'+reportnumber2+'Blinded.pdf')
+
+		
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber.replace(')','_')
+	if reportnumber2 in documento:
+		print('*******move document*******')
+		time.sleep(1)
+		shutil.move(glob.glob('C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\12-1-2\\'+reportnumber2+'*.pdf')[0],'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\'+reportnumber2+'Blinded.pdf')
+
+	
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber.replace(')','_')
+	if reportnumber2 in documento:
+		print('*******move document*******')
+		shutil.move(glob.glob('C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\12-1-2\\'+reportnumber2+'*.pdf')[0],'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\'+reportnumber2+'Blinded.pdf')
+
+		
+>>> len(documento)
+28
+>>> for num in range(len(book2['报告日期'])):
+	book1['Control No.'][num]
+
+	
+'20210656695(2)'
+'20210656695(4)'
+'20210656695(5)'
+'20210512395(5)'
+'20210656695(6)'
+'20210764552(0)'
+'20210764552(1)'
+'20200342116(8)'
+'20200342116(9)'
+'20210512395(7)'
+'20210829343(0)'
+'20210829343(1)'
+'20200342116(12)'
+'20210841874(0)'
+'20210829343(3)'
+'20210841874(1)'
+'20210906696(0)'
+'20210829343(6)'
+'20210906696(1)'
+'20210918211(1)'
+'20200342116(15)'
+'20200810186(4)'
+'20210530604(5)'
+'20210918211(2)'
+'20210829343(8)'
+'20210829343(9)'
+'20210906696(4)'
+'20211029397(0)'
+'20210918211(4)'
+'20211035499(0)'
+'20211035499(1)'
+'20211054665(0)'
+'20211029397(1)'
+'20211054665(1)'
+'20211114891(0)'
+'20211122649(0)'
+'20200342116(16)'
+'20211122649(2)'
+'20211029397(2)'
+'20211147542(0)'
+'20211207519(0)'
+'20211114891(3)'
+'20211163871(0)'
+'20211147542(1)'
+'20210530604(9)'
+'20200316057(6)'
+'20211207519(1)'
+'20211243093(0)'
+'20211234477(0)'
+'20211244910(0)'
+'20211243093(2)'
+'20211239840(1)'
+'20211259199(0)'
+'20211243093(3)'
+'20211207519(2)'
+'20211244910(2)'
+'20211259199(1)'
+'20220116381(0)'
+'20211239840(3)'
+'20220141033(0)'
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber.replace(')','_')
+	print(reportnumber2)
+
+	
+20210656695(2_
+20210656695(4_
+20210656695(5_
+20210512395(5_
+20210656695(6_
+20210764552(0_
+20210764552(1_
+20200342116(8_
+20200342116(9_
+20210512395(7_
+20210829343(0_
+20210829343(1_
+20200342116(12_
+20210841874(0_
+20210829343(3_
+20210841874(1_
+20210906696(0_
+20210829343(6_
+20210906696(1_
+20210918211(1_
+20200342116(15_
+20200810186(4_
+20210530604(5_
+20210918211(2_
+20210829343(8_
+20210829343(9_
+20210906696(4_
+20211029397(0_
+20210918211(4_
+20211035499(0_
+20211035499(1_
+20211054665(0_
+20211029397(1_
+20211054665(1_
+20211114891(0_
+20211122649(0_
+20200342116(16_
+20211122649(2_
+20211029397(2_
+20211147542(0_
+20211207519(0_
+20211114891(3_
+20211163871(0_
+20211147542(1_
+20210530604(9_
+20200316057(6_
+20211207519(1_
+20211243093(0_
+20211234477(0_
+20211244910(0_
+20211243093(2_
+20211239840(1_
+20211259199(0_
+20211243093(3_
+20211207519(2_
+20211244910(2_
+20211259199(1_
+20220116381(0_
+20211239840(3_
+20220141033(0_
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber1.replace(')','_')
+	print(reportnumber2)
+
+	
+20210656695_2_
+20210656695_4_
+20210656695_5_
+20210512395_5_
+20210656695_6_
+20210764552_0_
+20210764552_1_
+20200342116_8_
+20200342116_9_
+20210512395_7_
+20210829343_0_
+20210829343_1_
+20200342116_12_
+20210841874_0_
+20210829343_3_
+20210841874_1_
+20210906696_0_
+20210829343_6_
+20210906696_1_
+20210918211_1_
+20200342116_15_
+20200810186_4_
+20210530604_5_
+20210918211_2_
+20210829343_8_
+20210829343_9_
+20210906696_4_
+20211029397_0_
+20210918211_4_
+20211035499_0_
+20211035499_1_
+20211054665_0_
+20211029397_1_
+20211054665_1_
+20211114891_0_
+20211122649_0_
+20200342116_16_
+20211122649_2_
+20211029397_2_
+20211147542_0_
+20211207519_0_
+20211114891_3_
+20211163871_0_
+20211147542_1_
+20210530604_9_
+20200316057_6_
+20211207519_1_
+20211243093_0_
+20211234477_0_
+20211244910_0_
+20211243093_2_
+20211239840_1_
+20211259199_0_
+20211243093_3_
+20211207519_2_
+20211244910_2_
+20211259199_1_
+20220116381_0_
+20211239840_3_
+20220141033_0_
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber1.replace(')','_')
+	if reportnumber2 in documento:
+		print('*******move document*******')
+		shutil.move(glob.glob('C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\12-1-2\\'+reportnumber2+'*.pdf')[0],'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\'+reportnumber2+'Blinded.pdf')
+
+		
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber1.replace(')','_')
+	if reportnumber2 in documento:
+		print('right')
+
+		
+>>> reportnumber2
+'20220141033_0_'
+>>> reportnumber2 in documento
+False
+>>> documento
+['20211035499_6_Blinded.pdf', '20211054665_4_Blinded.pdf', '20211163871_5_Blinded.pdf', '20211207519_2_Blinded.pdf', '20211234477_0_Blinded.pdf', '20211234477_2_Blinded.pdf', '20211239840_1_Blinded.pdf', '20211239840_3_Blinded.pdf', '20211239840_5_Blinded.pdf', '20211243093_0_Blinded.pdf', '20211243093_2_Blinded.pdf', '20211243093_3_Blinded.pdf', '20211244910_0_Blinded.pdf', '20211244910_2_Blinded.pdf', '20211259199_0_Blinded.pdf', '20211259199_1_Blinded.pdf', '20211259199_3_Blinded.pdf', '20211259199_4_Blinded.pdf', '20220116381_0_Blinded.pdf', '20220140724_0_Blinded.pdf', '20220141033_0_Blinded.pdf', '20220141033_1_Blinded.pdf', '20220141033_2_Blinded.pdf', '20220152355_0_Blinded.pdf', '20220152355_1_Blinded.pdf', '20220202651_0_Blinded.pdf', '20220202651_1_Blinded.pdf', '20220212122_0_Blinded.pdf']
+>>> reportnumber2 in document
+True
+>>> for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber1.replace(')','_')
+	if reportnumber2 in document:
+		print('*******move document*******')
+		shutil.move(glob.glob('C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\12-1-2\\'+reportnumber2+'*.pdf')[0],'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\'+reportnumber2+'Blinded.pdf')
+
+		
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211243093_0_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211234477_0_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211244910_0_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211243093_2_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211239840_1_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211259199_0_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211243093_3_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211207519_2_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211244910_2_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211259199_1_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20220116381_0_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20211239840_3_Blinded.pdf'
+*******move document*******
+'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211\\20220141033_0_Blinded.pdf'
+>>> len(documento)
+28
+>>> len(glob.glob(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\SUSAR\12-1-2\*Blinded.pdf'))
+15
+>>> documento=os.listdir(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\SUSAR\12-1-2')
+>>> len(documento)
+15
+>>> documento=os.listdir(r'C:\\Users\\U1092451\\OneDrive - IQVIA\\Desktop\\Janssen UZA77631\\SUSAR\\SUSAR 20210712-20211211')
+>>> len(documento)
+56
+>>> 
+
+gai1=re.compile('^\d*-\d+-\d+')
+date=str(book2['报告日期'][0])
+date1=re.match(gai1,date).group(0).replace('-','年',1).replace('-','月')+'日'
+
+for num in range(len(book2['报告日期'])):
+	reportnumber=book1['Control No.'][num]
+	reportnumber1=reportnumber.replace('(','_')
+	reportnumber2=reportnumber1.replace(')','_')
+	page.find_element_by_id('file_'+str(num+1)).send_keys(glob.glob(r'C:\\Users\U1092451\OneDrive - IQVIA\Desktop\Janssen UZA77631\SUSAR\SUSAR 20210712-20211211\\'+reportnumber2+'*.pdf')[0])
+	date=str(book2['报告日期'][num])
+	date1=re.match(gai1,date).group(0).replace('-','年',1).replace('-','月')+'日'
+	page.execute_script("document.getElementById('txtVersionDate_"+str(num+1)+"')"+'.value='+"'"+date1+"'")
+	page.execute_script("document.getElementById('txtName_"+str(num+1)+"')"+".value="+"'"+date1+'SUSAR报告'+"'")
+	page.execute_script("document.getElementById('txtExplain_"+str(num+1)+"')"+'.value='+"'"+'英文版报告，报告编号：'+reportnumber2+"'")
+	page.execute_script('AddNewAttachment()')

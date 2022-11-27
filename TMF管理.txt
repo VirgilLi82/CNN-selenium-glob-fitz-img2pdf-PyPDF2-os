@@ -1,0 +1,184 @@
+import os,re
+class TMF文件夹整理(object):
+	def A先输入中心名称(self,num):
+		#输入中心数字代号可以获取文件夹路径#
+		os.chdir(r'\\shasfps02p.internal.imsglobal.com\Public Files\BMS - China LC Retrospective study\Master File Tracker - Sites')
+		self.name=os.listdir()[num-1]
+		print(self.name)
+	
+	def B进入中心文件(self):
+		self.path=r'\\shasfps02p.internal.imsglobal.com\Public Files\BMS - China LC Retrospective study\Master File Tracker - Sites'+'\\'+self.name
+		os.chdir(self.path)
+				
+	def C文件信息记录(self):
+		#在桌面打开一个文档#
+		text=open(r'C:\Users\U1092451\OneDrive - IQVIA\Desktop\mytxt.txt','a')
+		for a,b in zip(os.listdir(),range(0,len(os.listdir()))):
+					last=re.findall('\\.\\D*',a)
+					#如果没有相应文件（都是文件夹）
+					if last==[]:
+						print('有文件夹')
+					#替换文件后续#
+					else:
+						change=re.sub(last[0],'',a)
+					#写入文档#
+						text.write(str(b+1)+'.'+change+'\n')
+		text.close()
+				
+	def 伦理委员会首次递交(self):
+			os.chdir(self.path+'\\8. 伦理委员会\\8.1 伦理委员会首次递交')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 伦理委员会批准及成员清单(self):
+			os.chdir(self.path+'\\8. 伦理委员会\\8.2 伦理委员会批准及成员清单')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 研究中期伦理委员会递交及备案(self):
+			os.chdir(self.path+'\\8. 伦理委员会\\8.3 研究中期伦理委员会递交及备案')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 伦理审查进度报告(self):
+			os.chdir(self.path+'\\8. 伦理委员会\\8.4 伦理审查进度报告')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 保密协议(self):
+			os.chdir(self.path+'\\9. 协议及财务文件\\9.1 保密协议')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+
+	def 临床研究协议(self):
+			os.chdir(self.path+'\\9. 协议及财务文件\\9.2 临床研究协议')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 临床试验协议相关财务文件(self):
+			os.chdir(self.path+'\\9. 协议及财务文件\\9.4 临床试验协议相关财务文件')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 与本中心往来财务文件(self):
+			os.chdir(self.path+'\\9. 协议及财务文件\\9.5 与本中心往来财务文件')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+
+	def 临床物资的供应(self):
+			os.chdir(self.path+'\\11. 临床物资供应\\11.1 临床物资的供应')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 培训记录(self):
+			os.chdir(self.path+'\\13. 会议及培训\\13.1 培训记录')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 培训记录(self):
+			os.chdir(self.path+'\\13. 会议及培训\\13.1 培训记录')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 研究人员授权签名表(self):
+			os.chdir(self.path+'\\14. 研究人员信息\\14.1 研究人员授权签名表')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 研究人员简历(self):
+			os.chdir(self.path+'\\14. 研究人员信息\\14.2 研究人员简历')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 证书(self):
+			os.chdir(self.path+'\\14. 研究人员信息\\14.3 证书')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 财务声明(self):
+			os.chdir(self.path+'\\14. 研究人员信息\\14.4 财务声明')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 财务声明(self):
+			os.chdir(self.path+'\\14. 研究人员信息\\14.4 财务声明')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 研究中心监查登记表(self):
+			os.chdir(self.path+'\\16. 中心监查\\16.1 研究中心监查登记表')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 研究中心启动访视(self):
+			os.chdir(self.path+'\\16. 中心监查\\16.2 研究中心启动访视')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 研究中心常规监查(self):
+			os.chdir(self.path+'\\16. 中心监查\\16.3 研究中心常规监查')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 与研究者的沟通(self):
+			os.chdir(self.path+'\\17. 沟通\\17.1 与研究者的沟通')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 其他试验文件(self):
+			os.chdir(self.path+'\\21. 其他试验文件')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 通讯录(self):
+			os.chdir(self.path+'\\1. 通讯录（研究中心通讯录）')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+				print('Y')
+
+	def 研究方案签字页(self):
+			os.chdir(self.path+'\\3. 方案和方案修正案\\3.1 研究方案签字页')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 研究方案修正案签字页(self):
+			os.chdir(self.path+'\\3. 方案和方案修正案\\3.2 研究方案修正案签字页')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	def 知情同意书(self):
+			os.chdir(self.path+'\\5. 知情同意书')
+				#判断文件夹内容是否为空#
+			if len(os.listdir()[0]) != '':
+				print('文件存在,共'+str(len(os.listdir()))+'个')
+
+	
+
+new=TMF文件夹整理()
+

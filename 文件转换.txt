@@ -1,0 +1,104 @@
+def start(filename):
+	for a,b,c in os.walk(r"C:\Users\U1092451\Desktop\水印"+'\\'+str(filename)):
+		for d in c:shutil.move(a+'\\'+d,r"C:\Users\U1092451\Desktop"+'\\'+d)
+
+img=cv.imread(r'C:\Users\U1092451\Desktop\0.jpg')
+
+def pic2pdf(name):
+	import PyPDF2 as pdf
+	import glob
+	import img2pdf as itp
+	for a in glob.glob(r'C:\Users\U1092451\Desktop\*.jpg'):
+		file=open(a.replace('jpg','pdf'),'ab')
+		content=itp.convert(a)
+		file.write(content)
+	writer=pdf.PdfFileWriter()
+	for a in glob.glob(r'C:\Users\U1092451\Desktop\*.pdf'):
+		reader=pdf.PdfFileReader(a)
+		writer.addPage(reader.getPage(0))
+	newfile=open(r'C:\Users\U1092451\Desktop'+'\\'+name+'.pdf','ab')
+	writer.write(newfile)
+	newfile.close()
+
+
+def pic(filename):
+	import glob
+	import fitz as fi
+	path=glob.glob(r"C:\Users\U1092451\Desktop\水印"+'\\'+str(filename)+'.pdf')[0]
+	pdf=fi.open(str(path))
+	for a in range(pdf.page_count):
+		page=pdf[a]
+		mat=fi.Matrix(2,2)
+		pix=page.get_pixmap(matrix=mat)
+		pix.save(r"C:\Users\U1092451\Desktop\水印"+'\\'+filename+str(a)+'.jpg')
+
+class capture(object):
+	import cv2 as cv
+	cv.namedWindow('mywin',cv.WINDOW_GUI_NORMAL)
+	
+	@property
+	def path(self):
+		print(None)
+	@path.setter
+	def path(self,value):
+		return value
+
+	
+	@classmethod
+	def move(cs,e,x,y,flags,param):
+		global a,b
+		global png
+		import cv2 as cv
+		img=cv.imread(param)
+		if e==cv.EVENT_LBUTTONDOWN:
+			print('作图')
+			print('先点鼠标确认边框，再按住ctrl或shift，再点击鼠标保存')
+			a=x
+			b=y
+		if flags==cv.EVENT_FLAG_ALTKEY:
+			name=input('请输入文件名')
+			cv.imwrite(r'C:\Users\U1092451\Desktop'+'\\'+name+'.jpg',png)
+		if e==cv.EVENT_RBUTTONDOWN:
+			print('清理水印')
+			c=[255,255,255]
+			d=[]
+			e=0
+			while e<y-b:
+				d.append(c)
+				e=e+1
+			for num in range(a,x):
+				img[b:y+1,num]=d
+			cv.imshow(img)
+			png=img
+	@classmethod
+	def setcallback(cs):
+		import cv2 as cv
+		cv.setMouseCallback('mywin',cs.move,cs.path)
+		img=cv.imread(cs.path)
+		cv.imshow('mywin',img)
+
+
+def move(e,x,y,flags,parma):
+		global a,b
+		global png
+		if e==cv.EVENT_LBUTTONDOWN:
+			print('作图')
+			print('先点鼠标确认边框，再按住ctrl或shift，再点击鼠标保存')
+			a=x
+			b=y
+		if flags==cv.EVENT_FLAG_ALTKEY:
+			name=input('请输入文件名')
+			cv.imwrite(r'C:\Users\U1092451\Desktop'+'\\'+name+'.jpg',png)
+		if e==cv.EVENT_RBUTTONDOWN:
+			print('清理水印')
+			c=[255,255,255]
+			d=[]
+			e=0
+			while e<y-b:
+				d.append(c)
+				e=e+1
+			for num in range(a,x):
+				img[b:y,num]=d
+			png=img
+			cv.imshow('mywin',png)
+
